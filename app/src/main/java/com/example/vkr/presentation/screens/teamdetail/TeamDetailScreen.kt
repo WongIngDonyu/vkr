@@ -26,6 +26,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.example.vkr.R
+import com.example.vkr.presentation.components.EventCardItem
+import com.example.vkr.presentation.components.EventCardItem2
 
 @Composable
 fun TeamDetailScreen(teamId: String, navController: NavController) {
@@ -141,62 +143,23 @@ fun TeamDetailScreen(teamId: String, navController: NavController) {
             } else {
                 LazyRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     items(events.sortedWith(compareBy({ it.verified }, { it.completed }))) { event ->
-                        ElevatedCard(
-                            modifier = Modifier
-                                .width(220.dp)
-                                .wrapContentHeight()
-                                .clickable {
-                                    if (event.creatorId == currentUser?.id) {
-                                        navController.navigate("manageEvent/${event.id}")
-                                    } else {
-                                        viewModel.selectEvent(event)
-                                    }
-                                },
-                            shape = RoundedCornerShape(16.dp),
-                            colors = CardDefaults.elevatedCardColors(
-                                containerColor = when {
-                                    event.verified -> Color.LightGray
-                                    event.completed -> MaterialTheme.colorScheme.surfaceVariant
-                                    else -> MaterialTheme.colorScheme.surface
-                                }                            )
-                        ) {
-                            Column(Modifier.padding(12.dp)) {
-                                if (!event.imageUri.isNullOrEmpty()) {
-                                    Image(
-                                        painter = rememberAsyncImagePainter(event.imageUri),
-                                        contentDescription = null,
-                                        contentScale = ContentScale.Crop,
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .height(140.dp)
-                                            .clip(RoundedCornerShape(12.dp))
-                                    )
-                                } else {
-                                    Box(
-                                        modifier = Modifier
-                                            .fillMaxWidth()
-                                            .height(140.dp)
-                                            .clip(RoundedCornerShape(12.dp))
-                                            .background(Color.LightGray),
-                                        contentAlignment = Alignment.Center
-                                    ) {
-                                        Text("Нет фото", color = Color.DarkGray)
-                                    }
-                                }
-                                Spacer(Modifier.height(12.dp))
-                                Text(event.title, fontWeight = FontWeight.Medium)
-                                Text(event.dateTime, color = Color.Gray)
-                                Spacer(Modifier.height(4.dp))
-                                when {
-                                    event.verified -> {
-                                        Text("Завершено", color = Color.Red, fontWeight = FontWeight.Bold)
-                                    }
-                                    event.completed -> {
-                                        Text("На проверке", color = MaterialTheme.colorScheme.tertiary, fontWeight = FontWeight.SemiBold)
-                                    }
-                                }
-                            }
+                        val painter = if (!event.imageUri.isNullOrBlank()) {
+                            rememberAsyncImagePainter(event.imageUri)
+                        } else {
+                            painterResource(id = R.drawable.images)
                         }
+                        EventCardItem2(
+                            event = event,
+                            painter = painter,
+                            onClick = {
+                                if (event.creatorId == currentUser?.id) {
+                                    navController.navigate("manageEvent/${event.id}")
+                                } else {
+                                    viewModel.selectEvent(event)
+                                }
+                            },
+                            modifier = Modifier.width(220.dp)
+                        )
                     }
                 }
             }

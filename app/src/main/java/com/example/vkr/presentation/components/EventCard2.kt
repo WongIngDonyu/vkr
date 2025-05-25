@@ -16,12 +16,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun EventCard2(
-    title: String,
-    datePlace: String,
-    painter: Painter,
-    onClick: () -> Unit
-) {
+fun EventCard2(title: String, datePlace: String, painter: Painter, onClick: () -> Unit) {
+    val parsedDateTime = DateTimeUtils.parseIsoFormatted(datePlace)
+    val displayDateTime = parsedDateTime?.let { DateTimeUtils.formatDisplay(it) } ?: "Ошибка загрузки времени"
     Box(
         modifier = Modifier
             .width(200.dp)
@@ -29,6 +26,7 @@ fun EventCard2(
             .clip(RoundedCornerShape(16.dp))
             .clickable { onClick() }
     ) {
+
         Image(
             painter = painter,
             contentDescription = title,
@@ -51,7 +49,7 @@ fun EventCard2(
                 style = MaterialTheme.typography.labelLarge
             )
             Text(
-                text = datePlace,
+                text = displayDateTime,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 style = MaterialTheme.typography.labelSmall
             )

@@ -23,9 +23,12 @@ import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.example.vkr.R
 import com.example.vkr.data.model.EventEntity
+import com.example.vkr.presentation.components.DateTimeUtils
+import com.example.vkr.presentation.components.EventCardItem
 import com.example.vkr.presentation.components.MyEventItem
 
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
 
 @Composable
 fun EventsScreen(modifier: Modifier = Modifier, snackbarHostState: SnackbarHostState, navController: NavController, viewModel: EventsViewModel = viewModel()) {
@@ -183,91 +186,14 @@ fun EventsScreen(modifier: Modifier = Modifier, snackbarHostState: SnackbarHostS
             text = {
                 Column {
                     Text(event.locationName)
-                    Text(event.dateTime)
+                    val parsedDateTime = DateTimeUtils.parseIsoFormatted(event.dateTime)
+                    val displayDateTime = parsedDateTime?.let { DateTimeUtils.formatDisplay(it) } ?: "Ошибка загрузки времени"
+                    Text(displayDateTime)
                     Spacer(Modifier.height(8.dp))
                     Text(event.description)
                 }
             },
             shape = RoundedCornerShape(24.dp)
         )
-    }
-}
-
-
-
-@Composable
-fun EventCardItem(
-    event: EventEntity,
-    painter: Painter,
-    onClick: () -> Unit,
-    onJoin: () -> Unit,
-    showJoinButton: Boolean,
-    modifier: Modifier = Modifier
-) {
-    val colorScheme = MaterialTheme.colorScheme
-    val isDone = event.verified || event.completed
-    val textColor = if (isDone) colorScheme.onSurfaceVariant else colorScheme.onSurface
-
-    val statusText = when {
-        event.verified -> "Завершено"
-        event.completed -> "На проверке"
-        else -> null
-    }
-    Column(
-        modifier = modifier
-            .clip(RoundedCornerShape(16.dp))
-            .clickable(enabled = !isDone) { onClick() }
-            .padding(8.dp)
-    ) {
-        Image(
-            painter = painter,
-            contentDescription = null,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(120.dp)
-                .clip(RoundedCornerShape(16.dp)),
-            contentScale = ContentScale.Crop
-        )
-        Spacer(modifier = Modifier.height(8.dp))
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = event.title,
-                    style = MaterialTheme.typography.bodyLarge,
-                    fontWeight = FontWeight.Medium,
-                    color = textColor
-                )
-                Text(
-                    text = event.locationName,
-                    style = MaterialTheme.typography.bodySmall,
-                    color = textColor
-                )
-            }
-            if (showJoinButton && !isDone) {
-                IconButton(
-                    onClick = onJoin,
-                    modifier = Modifier.size(24.dp)
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Add,
-                        contentDescription = "Присоединиться",
-                        tint = colorScheme.primary
-                    )
-                }
-            }
-        }
-        statusText?.let {
-            Spacer(modifier = Modifier.height(4.dp))
-            Text(
-                text = it,
-                color = if (event.verified) colorScheme.error else colorScheme.tertiary,
-                style = MaterialTheme.typography.labelSmall,
-                fontWeight = FontWeight.SemiBold
-            )
-        }
     }
 }

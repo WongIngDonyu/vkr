@@ -11,10 +11,10 @@ import com.example.vkr.data.model.EventEntity
 import com.example.vkr.data.remote.RetrofitInstance
 import com.example.vkr.data.repository.EventRepository
 import com.example.vkr.data.session.UserSessionManager
-import com.example.vkr.presentation.components.DateTimeUtils
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 import java.time.LocalDate
+import java.time.LocalDateTime
 
 class EventsViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -117,13 +117,7 @@ class EventsViewModel(application: Application) : AndroidViewModel(application) 
     fun leaveEvent(eventId: String, onSnackbar: (String) -> Unit) {
         val uid = userId ?: return
         val event = allEvents.find { it.id == eventId } ?: return
-
-        if (
-            event.creatorId == uid ||
-            event.isFinished ||
-            event.completed ||
-            event.verified
-        ) {
+        if (event.creatorId == uid || event.isFinished || event.completed || event.verified) {
             return
         }
         viewModelScope.launch {
@@ -165,14 +159,14 @@ class EventsViewModel(application: Application) : AndroidViewModel(application) 
         }
         val filteredByTime = when (selectedFilter) {
             "Сегодня" -> filtered.filter {
-                DateTimeUtils.parseDisplayFormatted(it.dateTime)?.toLocalDate() == now
+                LocalDateTime.parse(it.dateTime)?.toLocalDate() == now
             }
             "На неделе" -> filtered.filter {
-                val date = DateTimeUtils.parseDisplayFormatted(it.dateTime)?.toLocalDate()
+                val date = LocalDateTime.parse(it.dateTime)?.toLocalDate()
                 date != null && date in now..now.plusDays(6)
             }
             "В этом месяце" -> filtered.filter {
-                DateTimeUtils.parseDisplayFormatted(it.dateTime)?.month == now.month
+                LocalDateTime.parse(it.dateTime)?.month == now.month
             }
             else -> filtered
         }

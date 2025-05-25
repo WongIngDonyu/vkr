@@ -32,6 +32,8 @@ import com.example.vkr.R
 import com.example.vkr.data.repository.FeedRepository
 import com.example.vkr.data.repository.TeamRepository
 import com.example.vkr.data.repository.UserRepository
+import com.example.vkr.presentation.components.DateTimeUtils
+import java.time.LocalDateTime
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -315,7 +317,9 @@ fun HomeScreen2(navController: NavController, userRepository: UserRepository, te
                 Spacer(Modifier.width(12.dp))
                 Column {
                     Text("${activity.user} ${activity.description}")
-                    Text(activity.time, style = MaterialTheme.typography.bodySmall)
+                    val parsedTime = DateTimeUtils.parseServerFormatted(activity.time)
+                    val displayTime = parsedTime?.let { DateTimeUtils.formatDisplay(it) } ?: "Ошибка загрузки времени"
+                    Text(displayTime, style = MaterialTheme.typography.bodySmall)
                 }
             }
         }

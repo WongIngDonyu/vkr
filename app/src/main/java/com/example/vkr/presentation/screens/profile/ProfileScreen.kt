@@ -28,6 +28,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import coil.compose.rememberAsyncImagePainter
 import com.example.vkr.R
 import com.example.vkr.presentation.components.AchievementCard
+import com.example.vkr.presentation.components.DateTimeUtils
 import com.example.vkr.presentation.components.EventCard2
 import com.example.vkr.presentation.components.StatCard
 import java.time.LocalDateTime
@@ -107,7 +108,7 @@ fun ProfileScreen(navController: NavController, modifier: Modifier = Modifier, v
                 AchievementCard(it.title, it.description, it.imageResId)
             }
         }
-        Spacer(modifier = Modifier.height(24.dp))
+        Spacer(modifier = Modifier.height(16.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             StatCard("Очков", user?.points?.toString() ?: "0", Icons.Default.Star)
             StatCard("Мероприятий", user?.eventCount?.toString() ?: "0", Icons.Default.Event)
@@ -187,7 +188,9 @@ fun ProfileScreen(navController: NavController, modifier: Modifier = Modifier, v
             text = {
                 Column {
                     Text(event.locationName, style = MaterialTheme.typography.bodyMedium)
-                    Text(event.dateTime, style = MaterialTheme.typography.bodyMedium)
+                    val parsedDateTime = DateTimeUtils.parseIsoFormatted(event.dateTime)
+                    val displayDateTime = parsedDateTime?.let { DateTimeUtils.formatDisplay(it) } ?: "Ошибка загрузки времени"
+                    Text(displayDateTime, style = MaterialTheme.typography.bodyMedium)
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(event.description, style = MaterialTheme.typography.bodySmall)
                 }

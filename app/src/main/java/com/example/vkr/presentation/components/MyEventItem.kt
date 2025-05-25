@@ -35,6 +35,8 @@ fun MyEventItem(event: EventEntity, onClick: () -> Unit, onDelete: (() -> Unit)?
     val titleColor = if (isFinished) MaterialTheme.colorScheme.onSurfaceVariant else MaterialTheme.colorScheme.onSurface
     val dateColor = if (isFinished) MaterialTheme.colorScheme.outline else MaterialTheme.colorScheme.onSurfaceVariant
     val statusColor = MaterialTheme.colorScheme.error
+    val parsedDateTime = DateTimeUtils.parseIsoFormatted(event.dateTime)
+    val displayDateTime = parsedDateTime?.let { DateTimeUtils.formatDisplay(it) } ?: "Ошибка загрузки времени"
     val painter = if (!event.imageUri.isNullOrBlank()) {
         rememberAsyncImagePainter(Uri.parse(event.imageUri))
     } else {
@@ -64,7 +66,7 @@ fun MyEventItem(event: EventEntity, onClick: () -> Unit, onDelete: (() -> Unit)?
                 color = titleColor
             )
             Text(
-                event.dateTime,
+                displayDateTime,
                 style = MaterialTheme.typography.bodySmall,
                 color = dateColor
             )
