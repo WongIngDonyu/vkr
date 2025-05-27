@@ -18,7 +18,7 @@ import kotlinx.coroutines.withContext
 class EditProfileViewModel(application: Application) : AndroidViewModel(application) {
 
     private val context = application.applicationContext
-    private val repository = UserRepository(userDao = AppDatabase.getInstance(context).userDao(), teamDao = AppDatabase.getInstance(context).teamDao(), session = UserSessionManager(context))
+    private val repository = UserRepository(userDao = AppDatabase.getInstance(context).userDao(), teamDao = AppDatabase.getInstance(context).teamDao(), session = UserSessionManager(context), achievementDao = AppDatabase.getInstance(context).achievementDao())
 
     var user by mutableStateOf<UserEntity?>(null)
         private set

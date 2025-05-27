@@ -50,7 +50,6 @@ class HomeViewModel2(private val userRepository: UserRepository, private val tea
     val activities: StateFlow<List<ActivityItem>> = _activities
 
     private val _isLoading = MutableStateFlow(false)
-    val isLoading: StateFlow<Boolean> = _isLoading
 
     init {
         loadUserData()
@@ -131,7 +130,8 @@ class HomeViewModel2(private val userRepository: UserRepository, private val tea
                     )
                 }
             } catch (e: Exception) {
-                Log.e("HomeViewModel2", "Failed to load feed", e)
+                println("Ошибка загрузки: ${e.localizedMessage}")
+                null
             }
         }
     }

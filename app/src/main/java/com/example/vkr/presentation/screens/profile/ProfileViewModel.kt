@@ -42,7 +42,7 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
 
     init {
         val context = application.applicationContext
-        repository = UserRepository(userDao = AppDatabase.getInstance(context).userDao(), teamDao = AppDatabase.getInstance(context).teamDao(), session = UserSessionManager(context))
+        repository = UserRepository(userDao = AppDatabase.getInstance(context).userDao(), teamDao = AppDatabase.getInstance(context).teamDao(), session = UserSessionManager(context), achievementDao = AppDatabase.getInstance(context).achievementDao())
         loadProfile()
     }
 
@@ -56,6 +56,9 @@ class ProfileViewModel(application: Application) : AndroidViewModel(application)
                 if (apiUser != null) {
                     user = apiUser
                     repository.saveUserToDb(apiUser)
+                }
+                withContext(Dispatchers.IO) {
+                    repository.fetchAndSaveAchievements(phone)
                 }
             }
             withContext(Dispatchers.IO) {

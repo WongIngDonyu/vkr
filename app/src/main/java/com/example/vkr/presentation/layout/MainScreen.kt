@@ -45,7 +45,7 @@ fun MainScreen(currentRoute: String, navController: NavHostController) {
     val db = remember { AppDatabase.getInstance(context) }
 
     val userRepository = remember {
-        UserRepository(userDao = db.userDao(), teamDao = db.teamDao(), session = session)
+        UserRepository(userDao = db.userDao(), teamDao = db.teamDao(), session = session, achievementDao = AppDatabase.getInstance(context).achievementDao())
     }
 
     val teamRepository = remember {

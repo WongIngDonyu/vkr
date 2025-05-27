@@ -24,9 +24,7 @@ class AuthRepository(private val api: AuthApi, private val userDao: UserDao, pri
     suspend fun loadAndStoreUserByPhone(phone: String): Boolean {
         val response = api.getUserByPhone(phone)
         if (!response.isSuccessful) return false
-
         val user = response.body() ?: return false
-
         val entity = UserEntity(
             id = user.id,
             name = user.name,
@@ -38,17 +36,13 @@ class AuthRepository(private val api: AuthApi, private val userDao: UserDao, pri
             avatarUri = user.avatarUri,
             teamId = user.teamId
         )
-
         userDao.insertUser(entity)
-
-        val achievementRefs = listOf(
-            UserAchievementCrossRef(user.id, 1),
-            UserAchievementCrossRef(user.id, 3)
-        )
-
-        userDao.insertUserAchievementCrossRefs(achievementRefs)
+//        val achievementRefs = listOf(
+//            UserAchievementCrossRef(user.id, 1),
+//            UserAchievementCrossRef(user.id, 3)
+//        )
+//        userDao.insertUserAchievementCrossRefs(achievementRefs)
         session.saveUser(user.phone, user.role)
-
         return true
     }
 

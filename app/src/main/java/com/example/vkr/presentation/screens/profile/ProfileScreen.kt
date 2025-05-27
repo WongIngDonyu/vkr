@@ -31,6 +31,7 @@ import com.example.vkr.presentation.components.AchievementCard
 import com.example.vkr.presentation.components.DateTimeUtils
 import com.example.vkr.presentation.components.EventCard2
 import com.example.vkr.presentation.components.StatCard
+import com.example.vkr.presentation.components.getAchievementDrawable
 import java.time.LocalDateTime
 
 @Composable
@@ -105,7 +106,8 @@ fun ProfileScreen(navController: NavController, modifier: Modifier = Modifier, v
         Spacer(modifier = Modifier.height(8.dp))
         LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             items(achievements) {
-                AchievementCard(it.title, it.description, it.imageResId)
+                val drawableRes = getAchievementDrawable(it.imageResId)
+                AchievementCard(it.title, it.description, drawableRes)
             }
         }
         Spacer(modifier = Modifier.height(16.dp))

@@ -1,5 +1,6 @@
 package com.example.vkr.data.api
 
+import com.example.vkr.data.remote.api.AchievementApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -59,5 +60,14 @@ object RetrofitInstance {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(FeedApi::class.java)
+    }
+
+    val achievementApi: AchievementApi by lazy {
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(AchievementApi::class.java)
     }
 }

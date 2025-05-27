@@ -42,7 +42,7 @@ abstract class AppDatabase : RoomDatabase() {
                             val appScope = CoroutineScope(Dispatchers.IO)
                             appScope.launch {
                                 val database = getInstance(context)
-                                database.populateInitialAchievements()
+//                                database.populateInitialAchievements()
                                 //database.populateInitialTeams()
                             }
                         }
@@ -54,18 +54,18 @@ abstract class AppDatabase : RoomDatabase() {
         }
     }
 
-    suspend fun populateInitialAchievements() {
-        val achievements = listOf(
-            AchievementEntity(title = "Первый шаг", description = "Поучаствуй в своём первом мероприятие", imageResId = R.drawable.test41),
-            AchievementEntity(title = "Постоянный участник", description = "Прими участие в 5 ивентах", imageResId = R.drawable.test42),
-            AchievementEntity(title = "Твой первый ивент", description = "Создай своё первое событие", imageResId = R.drawable.test43),
-            AchievementEntity(title = "Организатор по жизни", description = "Создай 5 ивентов", imageResId = R.drawable.test44),
-            AchievementEntity(title = "Первая сотня", description = "Набери 100 баллов", imageResId = R.drawable.test45)
-        )
-        achievements.forEach {
-            this.achievementDao().insertAchievement(it)
-        }
-    }
+//    suspend fun populateInitialAchievements() {
+//        val achievements = listOf(
+//            AchievementEntity(title = "Первый шаг", description = "Поучаствуй в своём первом мероприятие", imageResId = R.drawable.test41),
+//            AchievementEntity(title = "Постоянный участник", description = "Прими участие в 5 ивентах", imageResId = R.drawable.test42),
+//            AchievementEntity(title = "Твой первый ивент", description = "Создай своё первое событие", imageResId = R.drawable.test43),
+//            AchievementEntity(title = "Организатор по жизни", description = "Создай 5 ивентов", imageResId = R.drawable.test44),
+//            AchievementEntity(title = "Первая сотня", description = "Набери 100 баллов", imageResId = R.drawable.test45)
+//        )
+//        achievements.forEach {
+//            this.achievementDao().insertAchievement(it)
+//        }
+//    }
 
 //    suspend fun populateInitialTeams() {
 //        val teams = listOf(
