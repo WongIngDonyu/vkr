@@ -1,6 +1,6 @@
-package com.example.vkr.data.remote
+package com.example.vkr.data.api
 
-import com.example.vkr.data.model.ActivityDTO
+import com.example.vkr.data.remote.dto.ActivityDTO
 import retrofit2.http.GET
 
 interface FeedApi {

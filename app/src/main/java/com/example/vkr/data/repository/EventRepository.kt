@@ -1,17 +1,17 @@
 package com.example.vkr.data.repository
 
-import com.example.vkr.data.dao.EventDao
-import com.example.vkr.data.dao.TeamDao
-import com.example.vkr.data.dao.UserDao
-import com.example.vkr.data.model.EventEntity
-import com.example.vkr.data.model.EventRequestDTO
-import com.example.vkr.data.model.TeamEntity
-import com.example.vkr.data.model.UserEntity
-import com.example.vkr.data.model.UserEventCrossRef
-import com.example.vkr.data.remote.EventApi
+import com.example.vkr.data.api.EventApi
+import com.example.vkr.data.local.dao.EventDao
+import com.example.vkr.data.local.dao.TeamDao
+import com.example.vkr.data.local.dao.UserDao
+import com.example.vkr.data.local.model.EventEntity
+import com.example.vkr.data.local.model.TeamEntity
+import com.example.vkr.data.local.model.UserEntity
+import com.example.vkr.data.local.model.UserEventCrossRef
+import com.example.vkr.data.remote.dto.EventRequestDTO
 import kotlinx.coroutines.flow.Flow
 
-class EventRepository(private val api: EventApi,private val eventDao: EventDao, private val teamDao: TeamDao, private val userDao: UserDao) {
+class EventRepository(private val api: EventApi, private val eventDao: EventDao, private val teamDao: TeamDao, private val userDao: UserDao) {
 
     suspend fun fetchAndSaveEvents() {
         val response = api.getAllEvents()
@@ -111,10 +111,7 @@ class EventRepository(private val api: EventApi,private val eventDao: EventDao, 
         return teamDao.getAllTeams().firstOrNull { it.id == teamId }
     }
 
-    suspend fun createAndSaveEvent(
-        creator: UserEntity,
-        dto: EventRequestDTO
-    ): EventEntity? {
+    suspend fun createAndSaveEvent(creator: UserEntity, dto: EventRequestDTO): EventEntity? {
         return try {
             val response = api.createEvent(dto)
             if (response.isSuccessful) {

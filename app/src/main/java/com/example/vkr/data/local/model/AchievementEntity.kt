@@ -1,4 +1,4 @@
-package com.example.vkr.data.model
+package com.example.vkr.data.local.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

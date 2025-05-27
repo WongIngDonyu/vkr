@@ -1,6 +1,6 @@
-package com.example.vkr.data.remote
+package com.example.vkr.data.api
 
-import com.example.vkr.data.model.UserDTO
+import com.example.vkr.data.remote.dto.UserDTO
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET

@@ -1,7 +1,7 @@
-package com.example.vkr.data.remote
+package com.example.vkr.data.api
 
-import com.example.vkr.data.model.EventRequestDTO
-import com.example.vkr.data.model.EventResponseDTO
+import com.example.vkr.data.remote.dto.EventRequestDTO
+import com.example.vkr.data.remote.dto.EventResponseDTO
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE

@@ -7,13 +7,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.vkr.data.AppDatabase
-import com.example.vkr.data.model.EventEntity
-import com.example.vkr.data.remote.RetrofitInstance
+import com.example.vkr.data.api.RetrofitInstance
+import com.example.vkr.data.local.AppDatabase
+import com.example.vkr.data.local.model.EventEntity
 import com.example.vkr.data.repository.EventRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+
 
 class ManageEventViewModel(application: Application) : AndroidViewModel(application) {
 

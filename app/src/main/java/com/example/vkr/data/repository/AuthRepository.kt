@@ -1,11 +1,11 @@
 package com.example.vkr.data.repository
 
-import com.example.vkr.data.dao.UserDao
-import com.example.vkr.data.model.RegisterDTO
-import com.example.vkr.data.model.UserAchievementCrossRef
-import com.example.vkr.data.model.UserEntity
-import com.example.vkr.data.model.UserLoginDTO
-import com.example.vkr.data.remote.AuthApi
+import com.example.vkr.data.api.AuthApi
+import com.example.vkr.data.local.dao.UserDao
+import com.example.vkr.data.local.model.UserAchievementCrossRef
+import com.example.vkr.data.local.model.UserEntity
+import com.example.vkr.data.remote.dto.RegisterDTO
+import com.example.vkr.data.remote.dto.UserLoginDTO
 import com.example.vkr.data.session.UserSessionManager
 import okhttp3.ResponseBody
 import retrofit2.Response

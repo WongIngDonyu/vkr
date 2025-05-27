@@ -1,4 +1,4 @@
-package com.example.vkr.data.model
+package com.example.vkr.data.remote.dto
 
 data class RegisterDTO(
     val name: String,

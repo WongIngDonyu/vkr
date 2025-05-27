@@ -7,8 +7,8 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
-import com.example.vkr.data.AppDatabase
-import com.example.vkr.data.model.TeamEntity
+import com.example.vkr.data.local.AppDatabase
+import com.example.vkr.data.local.model.TeamEntity
 import com.example.vkr.data.repository.TeamRepository
 import com.example.vkr.data.session.UserSessionManager
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -27,7 +27,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.example.vkr.R
-import com.example.vkr.data.model.EventEntity
+import com.example.vkr.data.local.model.EventEntity
 
 @Composable
 fun MyEventItem(event: EventEntity, onClick: () -> Unit, onDelete: (() -> Unit)? = null) {

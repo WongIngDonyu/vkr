@@ -2,14 +2,14 @@ package com.example.vkr.data.repository
 
 import android.content.Context
 import android.net.Uri
-import com.example.vkr.data.dao.TeamDao
-import com.example.vkr.data.dao.UserDao
-import com.example.vkr.data.model.AchievementEntity
-import com.example.vkr.data.model.EventEntity
-import com.example.vkr.data.model.TeamEntity
-import com.example.vkr.data.model.UserDTO
-import com.example.vkr.data.model.UserEntity
-import com.example.vkr.data.remote.RetrofitInstance
+import com.example.vkr.data.api.RetrofitInstance
+import com.example.vkr.data.local.dao.TeamDao
+import com.example.vkr.data.local.dao.UserDao
+import com.example.vkr.data.local.model.AchievementEntity
+import com.example.vkr.data.local.model.EventEntity
+import com.example.vkr.data.local.model.TeamEntity
+import com.example.vkr.data.local.model.UserEntity
+import com.example.vkr.data.remote.dto.UserDTO
 import com.example.vkr.data.session.UserSessionManager
 import com.example.vkr.presentation.screens.home2.LeaderboardPeriod
 import com.example.vkr.presentation.components.copyImageToInternalStorage

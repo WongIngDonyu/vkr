@@ -22,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.vkr.data.AppDatabase
+import com.example.vkr.data.local.AppDatabase
 import com.example.vkr.presentation.components.TeamArea
 import com.example.vkr.presentation.components.getPolygonCenter
 import com.example.vkr.presentation.components.isPointInsidePolygon
@@ -44,9 +44,7 @@ import com.yandex.mapkit.map.Map
 fun CreateEventScreen(navController: NavController) {
     val context = LocalContext.current
     val colorScheme = MaterialTheme.colorScheme
-    val viewModel: CreateEventViewModel = viewModel(
-        factory = CreateEventViewModelFactory(context.applicationContext as Application)
-    )
+    val viewModel: CreateEventViewModel = viewModel(factory = CreateEventViewModelFactory(context.applicationContext as Application))
     var launcher by remember {
         mutableStateOf<ManagedActivityResultLauncher<String, Uri?>?>(null)
     }

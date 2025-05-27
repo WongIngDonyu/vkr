@@ -19,7 +19,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.vkr.data.model.EventEntity
+import com.example.vkr.data.local.model.EventEntity
 
 @Composable
 fun EventCardItem2(event: EventEntity, painter: Painter, onClick: () -> Unit, modifier: Modifier = Modifier) {

@@ -1,8 +1,8 @@
-package com.example.vkr.data.dao
+package com.example.vkr.data.local.dao
 
 import androidx.room.*
-import com.example.vkr.data.model.EventEntity
-import com.example.vkr.data.model.UserWithEvents
+import com.example.vkr.data.local.model.EventEntity
+import com.example.vkr.data.local.model.UserWithEvents
 import kotlinx.coroutines.flow.Flow
 
 @Dao

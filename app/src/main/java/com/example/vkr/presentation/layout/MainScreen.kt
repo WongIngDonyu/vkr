@@ -22,8 +22,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.vkr.data.AppDatabase
-import com.example.vkr.data.remote.RetrofitInstance
+import com.example.vkr.data.api.RetrofitInstance
+import com.example.vkr.data.local.AppDatabase
 import com.example.vkr.data.repository.FeedRepository
 import com.example.vkr.data.repository.TeamRepository
 import com.example.vkr.data.repository.UserRepository

@@ -1,22 +1,22 @@
-package com.example.vkr.data
+package com.example.vkr.data.local
 
 import android.content.Context
 import androidx.room.*
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.vkr.data.dao.AchievementDao
-import com.example.vkr.data.dao.EventDao
-import com.example.vkr.data.dao.UserDao
-import com.example.vkr.data.model.AchievementEntity
-import com.example.vkr.data.model.EventEntity
-import com.example.vkr.data.model.UserAchievementCrossRef
-import com.example.vkr.data.model.UserEntity
-import com.example.vkr.data.model.UserEventCrossRef
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import com.example.vkr.R
-import com.example.vkr.data.dao.TeamDao
-import com.example.vkr.data.model.TeamEntity
+import com.example.vkr.data.local.dao.AchievementDao
+import com.example.vkr.data.local.dao.EventDao
+import com.example.vkr.data.local.dao.TeamDao
+import com.example.vkr.data.local.dao.UserDao
+import com.example.vkr.data.local.model.AchievementEntity
+import com.example.vkr.data.local.model.EventEntity
+import com.example.vkr.data.local.model.TeamEntity
+import com.example.vkr.data.local.model.UserAchievementCrossRef
+import com.example.vkr.data.local.model.UserEntity
+import com.example.vkr.data.local.model.UserEventCrossRef
 
 @Database(entities = [UserEntity::class, EventEntity::class, UserEventCrossRef::class, AchievementEntity::class, UserAchievementCrossRef::class, TeamEntity::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {

@@ -7,8 +7,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.vkr.data.AppDatabase
-import com.example.vkr.data.model.UserEntity
+import com.example.vkr.data.local.AppDatabase
+import com.example.vkr.data.local.model.UserEntity
 import com.example.vkr.data.repository.UserRepository
 import com.example.vkr.data.session.UserSessionManager
 import kotlinx.coroutines.Dispatchers

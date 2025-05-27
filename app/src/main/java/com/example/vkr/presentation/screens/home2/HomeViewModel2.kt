@@ -4,9 +4,9 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.vkr.data.model.TeamDTO
-import com.example.vkr.data.model.UserDTO
-import com.example.vkr.data.model.UserEntity
+import com.example.vkr.data.local.model.UserEntity
+import com.example.vkr.data.remote.dto.TeamDTO
+import com.example.vkr.data.remote.dto.UserDTO
 import com.example.vkr.data.repository.FeedRepository
 import com.example.vkr.data.repository.TeamRepository
 import com.example.vkr.data.repository.UserRepository

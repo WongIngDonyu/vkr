@@ -1,8 +1,8 @@
-package com.example.vkr.data.remote
+package com.example.vkr.data.api
 
-import com.example.vkr.data.model.RegisterDTO
-import com.example.vkr.data.model.UserDTO
-import com.example.vkr.data.model.UserLoginDTO
+import com.example.vkr.data.remote.dto.RegisterDTO
+import com.example.vkr.data.remote.dto.UserDTO
+import com.example.vkr.data.remote.dto.UserLoginDTO
 import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.Body

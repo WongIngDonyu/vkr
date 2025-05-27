@@ -43,28 +43,24 @@ class SignUpViewModelTest {
         } else {
             println("Ошибка имени: ${viewModel.nameErrorText}")
         }
-
         if (viewModel.nicknameErrorText.isEmpty()) {
             println("Ошибка: не выведено сообщение об ошибке никнейма")
             fail("Ожидалась ошибка в поле Никнейм")
         } else {
             println("Ошибка никнейма: ${viewModel.nicknameErrorText}")
         }
-
         if (viewModel.phoneErrorText.isEmpty()) {
             println("Ошибка: не выведено сообщение об ошибке телефона")
             fail("Ожидалась ошибка в поле Телефон")
         } else {
             println("Ошибка телефона: ${viewModel.phoneErrorText}")
         }
-
         if (viewModel.passwordErrorText.isEmpty()) {
             println("Ошибка: не выведено сообщение об ошибке пароля")
             fail("Ожидалась ошибка в поле Пароль")
         } else {
             println("Ошибка пароля: ${viewModel.passwordErrorText}")
         }
-
         if (viewModel.confirmPasswordErrorText.isEmpty()) {
             println("Ошибка: не выведено сообщение об ошибке подтверждения пароля")
             fail("Ожидалась ошибка в поле Подтверждение пароля")

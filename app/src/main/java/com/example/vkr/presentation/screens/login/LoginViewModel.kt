@@ -8,8 +8,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
-import com.example.vkr.data.AppDatabase
-import com.example.vkr.data.remote.RetrofitInstance
+import com.example.vkr.data.api.RetrofitInstance
+import com.example.vkr.data.local.AppDatabase
 import com.example.vkr.data.repository.AuthRepository
 import com.example.vkr.data.repository.TeamRepository
 import com.example.vkr.data.session.UserSessionManager

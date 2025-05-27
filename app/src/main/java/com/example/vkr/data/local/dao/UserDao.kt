@@ -1,11 +1,11 @@
-package com.example.vkr.data.dao
+package com.example.vkr.data.local.dao
 
 import androidx.room.*
-import com.example.vkr.data.model.UserAchievementCrossRef
-import com.example.vkr.data.model.UserEntity
-import com.example.vkr.data.model.UserEventCrossRef
-import com.example.vkr.data.model.UserWithAchievements
-import com.example.vkr.data.model.UserWithEvents
+import com.example.vkr.data.local.model.UserAchievementCrossRef
+import com.example.vkr.data.local.model.UserEntity
+import com.example.vkr.data.local.model.UserEventCrossRef
+import com.example.vkr.data.local.model.UserWithAchievements
+import com.example.vkr.data.local.model.UserWithEvents
 import kotlinx.coroutines.flow.Flow
 
 @Dao
