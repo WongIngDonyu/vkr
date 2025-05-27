@@ -45,8 +45,8 @@ class SignUpViewModel(private val repository: AuthRepository) : ViewModel() {
         if (nickname.length !in 3..30) {
             nicknameErrorText = "Никнейм должен содержать от 3 до 30 символов"
         }
-        if (!phone.matches(Regex("""\d{10,15}"""))) {
-            phoneErrorText = "Телефон должен содержать от 10 до 15 цифр"
+        if (!phone.matches(Regex("""\d{11}"""))) {
+            phoneErrorText = "Телефон должен содержать ровно 11 цифр"
         }
         if (!password.matches(Regex("""^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$"""))) {
             passwordErrorText = "Пароль должен содержать строчную, заглавную букву и цифру и быть не менее 8 символов"

@@ -41,7 +41,7 @@ class LoginViewModel(application: Application, private val repository: AuthRepos
     }
 
     fun onLoginClick() {
-        val isPhoneValid = phone.isNotBlank() && phone.matches(Regex("""\+?\d+"""))
+        val isPhoneValid = phone.matches(Regex("""\d{11}"""))
         val isPasswordValid = password.isNotBlank()
         phoneError = !isPhoneValid
         passwordError = !isPasswordValid
